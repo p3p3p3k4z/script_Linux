@@ -6,7 +6,6 @@ function actualizar_pack() {
     sleep 3
     echo -e "\nActualizando los paquetes instalados..."
     sudo nala upgrade
-    echo -e "\nSistema actualizado..."
     echo "Todo listo *<:^)"
 }
 
@@ -31,7 +30,6 @@ function buscaronline_pack(){
         echo "No se encontraron paquetes con el nombre: $pack"
     fi
 }
-	}
 
 function eliminar_pack() {
     local pack

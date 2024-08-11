@@ -1,7 +1,7 @@
 #! /bin/bash
 
 function instalar_basico() {
-    local paquetes=("curl" "git" "neofetch" "htop" "vlc" "thonny")
+    local paquetes=("curl" "git" "neofetch" "htop" "vlc" )
 
     for pack in "${paquetes[@]}"
     do
@@ -15,16 +15,13 @@ function instalar_basico() {
 }
 
 function f_c(){
-	sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config
+	sudo nala install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config
 	}
 function f_java(){
-	sudo apt install openjdk-17-jdk
+	sudo nala install openjdk-17-jdk
 	}
 function f_python(){
-	sudo apt install python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip
-	sudo apt install python3-tk
-	sudo apt-get install python3-pygame
-	sudo apt install python3-wxgtk4.0
+	sudo nala install python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip python3-tk python3-pygame python3-wxgtk4.0
 	}
 	
 function instalar_programacion() {
@@ -50,7 +47,7 @@ function instalar_programacion() {
                 f_python;
                 ;;
             5)
-                echo "Saliendo del programa."
+                echo "Saliendo del menu."
                 break
                 ;;
             *)
@@ -58,8 +55,41 @@ function instalar_programacion() {
                 ;;
         esac
 
-        echo "Presiona Enter para volver al menú..."
+        echo "Regresando.."
         read  # Pausa 
     done
 }
 
+function instalar_IDE() {
+	local opp
+	
+    while true; do
+        echo "IDES DISPONIBLES: "
+        echo "1- Geany (IDE RECOMENDADO)"
+        echo "2- Thonny (IDE PYTHON)"
+        echo "3- Spider (IDE PYTHON CIENCIA DE DATOS)"
+        echo "4- NEOVIM"
+        echo "5- Emacs"
+        echo "6- Salir"
+        echo "Teclea una opción"
+        read opp
+
+        case $opp in
+            1) sudo nala install geany ;;
+            2) sudo nala install thonny ;;
+            3) sudo nala install spyder ;;
+            4) sudo nala install neovim;;
+            5) sudo nala install emacs ;;
+            6)
+                echo "Saliendo del menu."
+                break
+                ;;
+            *)
+                echo "Opción inválida. Por favor, selecciona una opción válida."
+                ;;
+        esac
+
+        echo "Regresando..."
+        read  # Pausa 
+    done
+	}

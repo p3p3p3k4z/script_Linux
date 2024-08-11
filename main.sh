@@ -9,14 +9,24 @@ function gatito(){
 	echo "    '-.-' \ )-'( , o o)"
 	echo "          '-    \'_'´\_"
 	echo -e "\n\n"
-}
+	}
+
+function gatito2(){
+	echo "      |\      _,,,---,,_"
+	echo "ZZZzz /,'.-''    -.  ;-;;,"
+	echo "     |,4-  ) )-,_. ,\ (  ''-'"
+	echo "    '---''(_/--'  '-'\_) "
+	echo -e "\n\n"
+	}
+
 function permisos(){
 	chmod +x gestor_pack.sh install_pack.sh
 	}
 
 function version(){
-	echo "Version 0.1"
-	echo "Realizado por p3p3_p4k4z ^^"
+	echo "Version 0.2"
+	echo -e "Realizado por p3p3_p4k4z ^^\n"
+	gatito2
 	}
 
 function help(){
@@ -45,6 +55,10 @@ function nueva_pc(){
 	instalar_basico;
 	echo -e "\n Se comenzara a instalar herramientas de programacion\n\n"
 	f_c;f_java;f_python;
+	sudo nala install geany thonny
+
+	echo -e "\n\nTU NUEVA PC YA ESTA LISTA PARA USAR :^)\n\n"
+	gatito2
 	
 	}
 function menu_pack() {
@@ -54,7 +68,7 @@ function menu_pack() {
         echo "2- Buscar un Paquete"
         echo "3- Eliminar un Paquete"
         echo "4- Limpiar Paquetes del Sistema"
-        echo "5- Salir"
+        echo "5- Regresar al menu principal"
         echo "Teclea una opción"
         read opp
 
@@ -63,11 +77,11 @@ function menu_pack() {
             2) buscar_pack ;;
             3) eliminar_pack ;;
             4) limpiar_pack ;;
-            5) echo "Saliendo del programa."; break ;;
+            5) echo "Regresando..."; break ;;
             *) echo "Opción inválida. Por favor, selecciona una opción válida." ;;
         esac
 
-        echo "Presiona Enter para volver al menú..."
+        echo "Regresando..."
         read
     done
 }
@@ -79,20 +93,20 @@ function menu_instalar() {
         echo "2- Paquetes de Programacion"
         echo "3- Paquetes de IDE"
         echo "4- Paquetes Curiosos"
-        echo "5- Salir"
+        echo "5- Regresar al menu principal"
         echo "Teclea una opción"
         read opp
 
         case $opp in
             1) instalar_basico;;
             2) instalar_programacion;;
-            3) break;;
+            3) instalar_IDE;;
             4) break;;
-            5) echo "Saliendo del programa."; break ;;
+            5) echo "Regresando..."; break ;;
             *) echo "Opción inválida. Por favor, selecciona una opción válida." ;;
         esac
 
-        echo "Presiona Enter para volver al menú..."
+        echo "Presiona Enter para volver al MENU PRINCIPAL..."
         read
     done
 }
@@ -107,14 +121,15 @@ clear
 if [ "$(id -u)" == "0" ];then
 	while true; do
 	nombre=$(whoami)
-	echo -e "\t\t\tBienvenido $nombre"
+	echo -e "\t\t\tBienvenido accediste como: $nombre"
 	echo -e "\t\t\tEste es un pequeño asistente para el sistema Debian 12"
 	gatito
 	
 	echo "1- Inicio basico para nueva pc"
 	echo "2- Gestor de paquetes"
 	echo "3- Instalar paquetes"
-	echo "4- Salir"
+	echo "4- Ayuda y Orientacion"
+	echo "5- Salir"
 
 	echo "Teclea una opcion"
 	read op
@@ -123,12 +138,11 @@ if [ "$(id -u)" == "0" ];then
 		1) nueva_pc;;
 		2) menu_pack;;
 		3) menu_instalar;;
-		4) exit 0;;
+		4) echo -e "En desarrollo...\n\n"; read;;
+		5) exit 0;;
 		*)
-			echo "No seleccionaste nada";;
+			echo -e "No seleccionaste nada...\n\n";;
 	esac
-	        echo "Presiona Enter para volver al menú..."
-        read
     done
 else
 	echo -e "\n\nPor favor reinicia el programa y inicia como superusuario..."
