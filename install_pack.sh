@@ -1,5 +1,17 @@
 #! /bin/bash
 
+function requisito(){
+	local pack=("nala")
+	if dpkg -s "$pack" &> /dev/null; then
+		echo "Iniciando en breve..."
+		sleep 1
+	else
+		echo "Instalando $pack ..."
+		echo "Este paquete es necesario para usar el programa"
+		sudo apt install -y "$pack"
+	fi
+}
+
 function instalar_basico() {
     local paquetes=("curl" "git" "neofetch" "htop" "vlc" )
 
@@ -9,7 +21,7 @@ function instalar_basico() {
             echo "$pack ya está instalado."
         else
             echo "Instalando $pack ..."
-            sudo apt install -y "$pack"
+            sudo nala install -y "$pack"
         fi
     done
 }
@@ -90,6 +102,31 @@ function instalar_IDE() {
         esac
 
         echo "Regresando..."
-        read  # Pausa 
+        read  
     done
 	}
+
+function menu_instalar() {
+    while true; do
+        echo -e "\n\nMenú de Instalacion de paquetes:"
+        echo "1- Paquetes Basicos"
+        echo "2- Paquetes de Programacion"
+        echo "3- Paquetes de IDE"
+        echo "4- Paquetes Curiosos"
+        echo "5- Regresar al menu principal"
+        echo "Teclea una opción"
+        read opp
+
+        case $opp in
+            1) instalar_basico;;
+            2) instalar_programacion;;
+            3) instalar_IDE;;
+            4) break;;
+            5) echo "Saliendo del menu"; break ;;
+            *) echo "Opción inválida. Por favor, selecciona una opción válida." ;;
+        esac
+
+        echo "Regresando..."
+        read
+    done
+}
