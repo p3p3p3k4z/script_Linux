@@ -17,6 +17,15 @@ function gatito(){
 	echo -e "\n"
 	}
 
+
+function gatitoMedio(){
+	echo -e "\t\t\t${colorMorado} _._     _,-'""'-._${finColor}"
+	echo -e "\t\t\t${colorMorado}(,-.'._,'(       |\`-/|${finColor}"
+	echo -e "\t\t\t${colorMorado}    '-.-' \ )-'( , o o)${finColor}"
+	echo -e "\t\t\t${colorMorado}          '-    \'_'´\_${finColor}"
+	echo -e "\n"
+	}
+
 function gatitoFin(){
 	echo -e "\t\t\t\t\t\t${colorMorado} _._     _,-'""'-._${finColor}"
 	echo -e "\t\t\t\t\t\t${colorMorado}(,-.'._,'(       |\`-/|${finColor}"

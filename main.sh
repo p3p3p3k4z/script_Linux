@@ -9,8 +9,8 @@ function permisos(){
 	}
 
 function version(){
-	echo "Version 0.3"
-	echo -e "Realizado por p3p3_p4k4z ^^\n"
+	echo -e "\t\t\tVersion 1.0"
+	echo -e "\t\t\tRealizado por p3p3_p4k4z ^^\n"
 	gatito2
 	}
 
@@ -29,7 +29,7 @@ function nueva_pc(){
 	clear;
 	echo -e "${colorVerde}Bienvenid@ a tu nueva pc... Se comenzara a instalar todo lo neceseria${finColor}"
 	echo -e "Se paciente y por favor espera\n"
-	gatitoFin
+	gatito
 	sleep 2
 	
 	divisor2
@@ -40,6 +40,7 @@ function nueva_pc(){
 	divisor2
 	echo -e "\t\t${colorAzul}Se comenzara a instalar todo lo necesario${finColor}"
 	divisor2
+	gatitoMedio
 	instalar_basico;
 
 	divisor2
@@ -63,9 +64,9 @@ requisito
 clear
 
 nombre=$(whoami)
-echo -e "\t\t\tBienvenido accediste como: $nombre"
+echo -e "\t\t\tBienvenido accediste como:${colorRojo} $nombre ${finColor}"
 echo -e "\t\t\tEste es un pequeño asistente para el sistema Debian 12"
-gatito
+version
 echo -e "${colorAmarillo}Presiona cualquier tecla para continuar...${finColor}"
 read
 
@@ -87,7 +88,13 @@ if [ "$(id -u)" == "0" ];then
 		1) nueva_pc;;
 		2) menu_pack;;
 		3) menu_instalar;;
-		4) echo -e "En desarrollo...\n\n"; read;;
+		4)	divisor
+			echo -e "\tRECUERDA CUANDO TERMINES DE LEER PRESIONA Q PARA SALIR"
+			divisor
+			gatitoFin2
+			read
+		cat comandos_principales.txt | more
+			;;
 		5) exit 0;;
 		*)
 			echo -e "No seleccionaste nada...\n\n";;

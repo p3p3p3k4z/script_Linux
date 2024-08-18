@@ -40,7 +40,7 @@ function instalar_programacion() {
     local opp
 
     while true; do
-        echo "LENGUAJES DISPONIBLES: "
+        echo -e "\nLENGUAJES DISPONIBLES: "
         echo "1- C/C++"
         echo "2- Java"
         echo "3- Python"
@@ -76,7 +76,7 @@ function instalar_IDE() {
 	local opp
 	
     while true; do
-        echo "IDES DISPONIBLES: "
+        echo -e "\nIDES DISPONIBLES: "
         echo "1- Geany (IDE RECOMENDADO)"
         echo "2- Thonny (IDE PYTHON)"
         echo "3- Spider (IDE PYTHON CIENCIA DE DATOS)"
@@ -103,6 +103,35 @@ function instalar_IDE() {
 
         echo "Regresando..."
         read  
+    done
+	}
+
+function pack_curiosos(){
+    while true; do
+        echo -e "\nPAQUETES CURIOSOS:"
+        echo "1- CBONSAI (Dibujar bonsai desde terminal)"
+        echo "2- LOLCAT (Un cat con colores)"
+        echo "3- TOILET (Palabra ASCII/Editor)"
+        echo "4- COWSAY (Animales dando una frase)"
+        echo "5- FORTUNE (Frase de fortuna del dia)"
+        echo "6- CMATRIX (Simulador de matrix)"
+        echo "7- Regresar al menu principal"
+        echo "Teclea una opción"
+        read opp
+
+        case $opp in
+            1) sudo nala install cbonsai;;
+            2) sudo nala install lolcat;;
+            3) sudo nala install toilet;;
+            4) sudo nala install cowsay;;
+            5) sudo nala install fortune;;
+            6) sudo nala install cmatrix;;
+            5) echo "Saliendo del menu"; break ;;
+            *) echo "Opción inválida. Por favor, selecciona una opción válida." ;;
+        esac
+
+        echo "Regresando..."
+        read
     done
 	}
 
