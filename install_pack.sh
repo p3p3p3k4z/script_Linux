@@ -13,7 +13,7 @@ function requisito(){
 }
 
 function instalar_basico() {
-    local paquetes=("curl" "git" "neofetch" "htop" "vlc" )
+    local paquetes=("curl" "git" "neofetch" "htop" "vlc" "gufw" )
 
     for pack in "${paquetes[@]}"
     do
@@ -21,19 +21,19 @@ function instalar_basico() {
             echo "$pack ya está instalado."
         else
             echo "Instalando $pack ..."
-            sudo nala install -y "$pack"
+            sudo apt install -y "$pack"
         fi
     done
 }
 
 function f_c(){
-	sudo nala install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config
+	sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config -y
 	}
 function f_java(){
-	sudo nala install openjdk-17-jdk
+	sudo apt install openjdk-17-jdk -y
 	}
 function f_python(){
-	sudo nala install python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip python3-tk python3-pygame python3-wxgtk4.0
+	sudo apt install python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip python3-tk python3-pygame python3-wxgtk4.0 -y
 	}
 	
 function instalar_programacion() {
@@ -68,7 +68,7 @@ function instalar_programacion() {
         esac
 
         echo "Regresando.."
-        read  # Pausa 
+        read  
     done
 }
 
@@ -78,7 +78,7 @@ function instalar_IDE() {
     while true; do
         echo -e "\nIDES DISPONIBLES: "
         echo "1- Geany (IDE RECOMENDADO)"
-        echo "2- Thonny (IDE PYTHON)"
+        echo "2- Thonny (IDE PYTHON RECOMENDADO)"
         echo "3- Spider (IDE PYTHON CIENCIA DE DATOS)"
         echo "4- NEOVIM"
         echo "5- Emacs"
@@ -150,7 +150,7 @@ function menu_instalar() {
             1) instalar_basico;;
             2) instalar_programacion;;
             3) instalar_IDE;;
-            4) break;;
+            4) pack_curiosos;;
             5) echo "Saliendo del menu"; break ;;
             *) echo "Opción inválida. Por favor, selecciona una opción válida." ;;
         esac

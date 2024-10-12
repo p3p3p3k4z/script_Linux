@@ -9,18 +9,14 @@ function permisos(){
 	}
 
 function version(){
-	echo -e "\t\t\tVersion 1.0"
+	echo -e "\t\t\tVersion 1.1"
 	echo -e "\t\t\tRealizado por p3p3_p4k4z ^^\n"
 	gatito2
 	}
 
-function help(){
-	echo "Por el momento no hay parametros :/"
-}
-
 function ctrl_c() {
     echo -e "\n${colorRojo}¡Operación interrumpida!${finColor}"
-    echo -e "Si existio algun error, reportarlo...\n"
+    echo -e "Si existio algun error, reportarlo o reinicia...\n"
     gatito2
     exit 1
 }
@@ -29,11 +25,14 @@ function nueva_pc(){
 	clear;
 	echo -e "${colorVerde}Bienvenid@ a tu nueva pc... Se comenzara a instalar todo lo neceseria${finColor}"
 	echo -e "Se paciente y por favor espera\n"
+	echo -e "\n\nAlgunas veces los paquetes requieren reiniciar\n"
+	echo -e "Reinicia tu pc en caso de que lo requiera\n"
 	gatito
 	sleep 2
 	
 	divisor2
-	echo -e "\t\t\t${colorAzul}Se actualizara el sistema${finColor}"
+	echo -e "\t\t\t${colorAzul}Se actualizara el sistema <:3${finColor}"
+	sudo apt update && sudo apt upgrade
 	divisor2
 	actualizar_pack;
 
@@ -47,7 +46,7 @@ function nueva_pc(){
 	echo -e "\t${colorAzul}  Se comenzara a instalar herramientas de programacion${finColor}"
 	divisor2
 	f_c;f_java;f_python;
-	sudo nala install geany thonny
+	sudo apt install geany thonny -y
 
 	divisor
 	echo -e "${colorVerde}TU NUEVA PC YA ESTA LISTA PARA USAR :^)${finColor}"
@@ -55,6 +54,50 @@ function nueva_pc(){
 	gatitoFin2
 	read
 	}
+
+# parametros
+# Función para mostrar la ayuda
+mostrar_ayuda() {
+  echo "Uso: $0 [opciones]"
+  echo ""
+  echo "Opciones:"
+  echo "  --help        Muestra este mensaje de ayuda"
+  echo "  -a [valor]    Opción -a con un valor requerido"
+  echo "  -b [valor]    Opción -b con un valor requerido"
+  echo "  --version     Muestra la versión del script"
+  exit 0
+}
+
+# Verificar los argumentos
+if [[ "$1" == "--help" ]]; then
+  mostrar_ayuda
+fi
+
+if [[ "$1" == "--version" ]]; then
+  version
+fi
+
+# Opciones adicionales
+while getopts "a:b:" opt; do
+  case $opt in
+    a)
+      echo "Opción -a con valor $OPTARG"
+      ;;
+    b)
+      echo "Opción -b con valor $OPTARG"
+      ;;
+    \?)
+      echo "Opción inválida: -$OPTARG"
+      exit 1
+      ;;
+  esac
+done
+
+# Si no se proporcionan argumentos
+#if [ $# -eq 0 ]; then
+#  echo "No se han proporcionado opciones. Usa --help para más información."
+#fi
+
 
 #main
 trap ctrl_c SIGINT
@@ -101,7 +144,7 @@ if [ "$(id -u)" == "0" ];then
 	esac
     done
 else
-	echo -e "\n\nPor favor reinicia el programa y inicia como superusuario..."
+	echo -e "${colorAmarillo}\n\nPor favor reinicia el programa y inicia como superusuario...${finColor}"
 	sleep 5
 	exit 0
 fi		
