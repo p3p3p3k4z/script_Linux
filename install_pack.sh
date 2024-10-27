@@ -13,7 +13,7 @@ function requisito(){
 }
 
 function instalar_basico() {
-    local paquetes=("curl" "git" "neofetch" "htop" "vlc" "gufw" )
+    local paquetes=("curl" "git" "neofetch" "htop" "vlc" "gufw" "xinput" )
 
     for pack in "${paquetes[@]}"
     do
@@ -30,7 +30,7 @@ function f_c(){
 	sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config -y
 	}
 function f_java(){
-	sudo apt install openjdk-17-jdk -y
+	sudo apt install openjdk-17-jdk default-jdk -y
 	}
 function f_python(){
 	sudo apt install python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip python3-tk python3-pygame python3-wxgtk4.0 -y
@@ -115,7 +115,10 @@ function pack_curiosos(){
         echo "4- COWSAY (Animales dando una frase)"
         echo "5- FORTUNE (Frase de fortuna del dia)"
         echo "6- CMATRIX (Simulador de matrix)"
-        echo "7- Regresar al menu principal"
+	echo "7- ONEKO (Mause de gato)"
+	echo "8- xscreen (protector de pantalla"
+	echo "9- ALL"
+        echo "10- Regresar al menu principal"
         echo "Teclea una opción"
         read opp
 
@@ -126,7 +129,10 @@ function pack_curiosos(){
             4) sudo nala install cowsay;;
             5) sudo nala install fortune;;
             6) sudo nala install cmatrix;;
-            5) echo "Saliendo del menu"; break ;;
+	    7) sudo nala install oneko
+	    7) sudo nala install xscreensaver xscreensaver-data-extra;;
+	    9) sudo apt install cbonsai lolcar toilet cowsay fortune cmatrix oneko xscreensaver xscreensaver-data-extra -y;;
+            8) echo "Saliendo del menu"; break ;;
             *) echo "Opción inválida. Por favor, selecciona una opción válida." ;;
         esac
 
