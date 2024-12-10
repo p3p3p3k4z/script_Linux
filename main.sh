@@ -24,7 +24,7 @@ function ctrl_c() {
 function nueva_pc(){
 	clear;
 	echo -e "${colorVerde}Bienvenid@ a tu nueva pc... Se comenzara a instalar todo lo neceseria${finColor}"
-	echo -e "Se paciente y por favor espera\n"
+	echo -e "\n"
 	echo -e "\n\nAlgunas veces los paquetes requieren reiniciar\n"
 	echo -e "Reinicia tu pc en caso de que lo requiera\n"
 	gatito

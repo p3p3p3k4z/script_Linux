@@ -13,7 +13,7 @@ function requisito(){
 }
 
 function instalar_basico() {
-    local paquetes=("curl" "git" "neofetch" "htop" "vlc" "gufw" "xinput" )
+    local paquetes=("curl" "git" "neofetch" "htop" "vlc" "gufw" "xinput")
 
     for pack in "${paquetes[@]}"
     do
@@ -35,6 +35,11 @@ function f_java(){
 function f_python(){
 	sudo apt install python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip python3-tk python3-pygame python3-wxgtk4.0 -y
 	}
+function f_chacharas(){
+	sudo nala install cbonsai lolcar toilet cowsay fortune cmatrix oneko holywood --assume-yes
+	}
+	
+### SECCION DE MENUS
 	
 function instalar_programacion() {
     local opp
@@ -42,7 +47,7 @@ function instalar_programacion() {
     while true; do
         echo -e "\nLENGUAJES DISPONIBLES: "
         echo "1- C/C++"
-        echo "2- Java"
+        echo "2- Java 17"
         echo "3- Python"
         echo "4- ALL"
         echo "5- Salir"
@@ -64,6 +69,7 @@ function instalar_programacion() {
                 ;;
             *)
                 echo "Opción inválida. Por favor, selecciona una opción válida."
+                echo "Regresando..."; break;
                 ;;
         esac
 
@@ -80,9 +86,10 @@ function instalar_IDE() {
         echo "1- Geany (IDE RECOMENDADO)"
         echo "2- Thonny (IDE PYTHON RECOMENDADO)"
         echo "3- Spider (IDE PYTHON CIENCIA DE DATOS)"
-        echo "4- NEOVIM"
-        echo "5- Emacs"
-        echo "6- Salir"
+        echo "4- Lanarus (IDE PASCAL)"
+        echo "5- NEOVIM"
+        echo "6- Emacs"
+        echo "7- Salir"
         echo "Teclea una opción"
         read opp
 
@@ -90,14 +97,16 @@ function instalar_IDE() {
             1) sudo nala install geany ;;
             2) sudo nala install thonny ;;
             3) sudo nala install spyder ;;
-            4) sudo nala install neovim;;
-            5) sudo nala install emacs ;;
-            6)
+            4) sudo nala install lazarus-ide;
+            5) sudo nala install neovim;;
+            6) sudo nala install emacs ;;
+            7)
                 echo "Saliendo del menu."
                 break
                 ;;
             *)
                 echo "Opción inválida. Por favor, selecciona una opción válida."
+                echo "Regresando..."; break;
                 ;;
         esac
 
@@ -106,18 +115,20 @@ function instalar_IDE() {
     done
 	}
 
-function pack_curiosos(){
+function Instalar_chacharas(){
+	local opp
+	
     while true; do
-        echo -e "\nPAQUETES CURIOSOS:"
+        echo -e "\nPAQUETES CURIOSOS PARA TERMINAL:"
         echo "1- CBONSAI (Dibujar bonsai desde terminal)"
         echo "2- LOLCAT (Un cat con colores)"
         echo "3- TOILET (Palabra ASCII/Editor)"
         echo "4- COWSAY (Animales dando una frase)"
         echo "5- FORTUNE (Frase de fortuna del dia)"
         echo "6- CMATRIX (Simulador de matrix)"
-	echo "7- ONEKO (Mause de gato)"
-	echo "8- xscreen (protector de pantalla"
-	echo "9- ALL"
+		echo "7- ONEKO (Mause de gato)"
+		echo "8- HOLYWOOD (Creerse hacker)"
+		echo "9- ALL"
         echo "10- Regresar al menu principal"
         echo "Teclea una opción"
         read opp
@@ -129,11 +140,13 @@ function pack_curiosos(){
             4) sudo nala install cowsay;;
             5) sudo nala install fortune;;
             6) sudo nala install cmatrix;;
-	    7) sudo nala install oneko
-	    7) sudo nala install xscreensaver xscreensaver-data-extra;;
-	    9) sudo apt install cbonsai lolcar toilet cowsay fortune cmatrix oneko xscreensaver xscreensaver-data-extra -y;;
-            8) echo "Saliendo del menu"; break ;;
-            *) echo "Opción inválida. Por favor, selecciona una opción válida." ;;
+			7) sudo nala install oneko;;
+			8) sudo nala install holywood;;
+			9) f_chacharas;;
+            10) echo "Saliendo del menu"; break ;;
+            *)  echo "Opción inválida. Por favor, selecciona una opción válida." 
+				echo "Regresando..."; break;
+				;;    
         esac
 
         echo "Regresando..."
@@ -142,6 +155,8 @@ function pack_curiosos(){
 	}
 
 function menu_instalar() {
+	local opp
+	
     while true; do
         echo -e "\n\nMenú de Instalacion de paquetes:"
         echo "1- Paquetes Basicos"
@@ -156,7 +171,7 @@ function menu_instalar() {
             1) instalar_basico;;
             2) instalar_programacion;;
             3) instalar_IDE;;
-            4) pack_curiosos;;
+            4) Instalar_chacharas;;
             5) echo "Saliendo del menu"; break ;;
             *) echo "Opción inválida. Por favor, selecciona una opción válida." ;;
         esac
