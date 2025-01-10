@@ -10,7 +10,7 @@ function permisos(){
 
 function version(){
 	echo -e "\t\t\tVersion 1.1"
-	echo -e "\t\t\tRealizado por p3p3_p4k4z ^^\n"
+	echo -e "\t\t\tRealizado por p3p3p4k4z ^^\n"
 	gatito2
 	}
 
