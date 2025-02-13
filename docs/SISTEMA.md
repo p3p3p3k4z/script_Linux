@@ -1,4 +1,4 @@
-##Manipulacion de Ficheros y Directorios
+# Manipulacion de Ficheros y Directorios
 Fichero: Archivo
 Directorios: Carpeta
 
@@ -43,10 +43,10 @@ find    encntrar fichero
 		find *.c Directorio
 		find Firectorio/ *.c
 
-##Editores principales de la terminal
+## Editores principales de la terminal
 nano nvim vim vi 
 
-##Permisos
+## Permisos
 su  	llamada como superusuario
 sudo    hacer como superusuario
 
@@ -57,19 +57,19 @@ chgrp   Cambiar permiso de usuario
 
 unmask  retornar los permisos por defectos
 
-##Administracion de archivos
--Compresion
+## Administracion de archivos
+- Compresion
     tar -cf     comprimir
     tar -xf     descomprimir
 
-##procesos en control
+## procesos en control
 top htop btop   permite conocer los procesos
 
 kill        terminar un proceso
 killall     termina todo de un programa 
 programa &  continuar usado la terminal
 
-##Sistema
+## Sistema
 whoami      saber nombre de usuario
 uptime      saber tiempo encendido,etc
 lscpu       todo cpu
@@ -82,29 +82,29 @@ who         quien soy
 
 wget, curl  permite descargar de internet
 
-##Operadores de redireccion
--Permite guardar las acciones
-echo "Hola MUndo" > archivo.txt
+## Operadores de redireccion
+- Permite guardar las acciones
+echo "Hola Mundo" > archivo.txt
 
-##Variables de entorno
--Configurar servidores, etc
+## Variables de entorno
+- Configurar servidores, etc
 export NOMBRE_VAR=1
 
--eliminar
+- eliminar
 unset NOMBRE_VAR
 
--imprimir
+- imprimir
 echo $NOMBRE_VAR
 
--lista de variables
+- lista de variables
 prinenv
 
-##Administrador de paquetes
+## Administrador de paquetes
 apt
 nala
 pacman
 dnd
 
-##Bash
+## Bash
 Este tipo de archivos se guardan con la extension .sh
 echo    Permite imprimir en la shell

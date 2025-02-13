@@ -1,33 +1,30 @@
 #! /bin/bash
 
-source decorador.sh
-
 function actualizar_pack() {
-    echo "Actualizando la lista de paquetes..."
-    sudo nala update
+    echo -e "\nActualizando la lista de paquetes..."
+    #sudo nala update
     sleep 3
     echo -e "\nActualizando los paquetes instalados..."
-    sudo nala upgrade
+    sudo nala upgrade --assume-yes
     echo "Todo listo *<:^)"
 }
 
 function buscar_pack() {
     local pack
-    divisor
-    echo "Dime el nombre del paquete a buscar en el sistema"
+
+    echo -e "\nDime el nombre del paquete a buscar en el sistema"
     read pack
     if sudo dpkg-query --list | grep -i "$pack"; then
         echo "Paquete(s) encontrado(s)."
     else
         echo "No se encontraron paquetes con el nombre: $pack"
     fi
-    divisor
 }
 
 function buscaronline_pack(){
-    local pack opp np
-    divisor2
-    echo "Dime el nombre del paquete a buscar en línea"
+    local pack opp np 
+
+    echo -e "\nDime el nombre del paquete a buscar en línea"
     read pack
 
     if nala search "$pack"; then
@@ -35,7 +32,7 @@ function buscaronline_pack(){
         echo "¿Deseas conocer más sobre el paquete? (S/s)"
         read opp
 
-        if [[ "$opp" == "S" || "$opp" == "s" || "$confirm" == "" ]]; then
+        if [[ "$opp" == "S" || "$opp" == "s" || "$opp" == "" ]]; then
             echo "Ingresa el nombre del paquete:"
             read np
             divisor
@@ -48,9 +45,9 @@ function buscaronline_pack(){
 }
 
 function eliminar_pack() {
-    local pack
-    divisor
-    echo "Dime el nombre del paquete a eliminar"
+    local pack confirm
+
+    echo -e "\nDime el nombre del paquete a eliminar"
     read pack
     echo "¿Estás seguro de que deseas eliminar el paquete '$pack'? (s/n)"
     read confirm
@@ -60,16 +57,14 @@ function eliminar_pack() {
     else
         echo "Operación cancelada."
     fi
-    divisor
+
 }
 
 function limpiar_pack() {
-	divisor2
     echo "Limpiando paquetes innecesarios..."
     sudo apt autoremove -y
     sudo apt clean
     echo "Sistema limpio."
-    divisor2
 }
 
 function menu_pack() {
