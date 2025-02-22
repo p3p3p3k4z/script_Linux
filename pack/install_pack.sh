@@ -37,8 +37,7 @@ function nueva_pc(){
 	
 	divisor2
 	echo -e "\t\t\t${colorAzul}Se actualizara el sistema <:3${finColor}"
-	#sudo apt update && sudo apt upgrade
-	actualizar_pack;
+	inicio_debian;
 
 	divisor2
 	echo -e "\t\t${colorAzul}Se comenzara a instalar todo lo necesario${finColor}"
@@ -61,6 +60,8 @@ function nueva_pc(){
     limpiar_pack;
 
 	divisor
+	neofetch
+	sleep 5
 	echo -e "${colorVerde}TU NUEVA PC YA ESTA LISTA PARA USAR :^)${finColor}"
 	echo -e "${colorAmarillo}Presiona cualquier tecla para continuar...${finColor}"
 	gatitoFin2
@@ -68,8 +69,8 @@ function nueva_pc(){
     }
     
 function bspwm(){
-	echo -e "${colorVerde}ESTE ES UN ENTORNO DE ESCRITORIO Y COMPLEMENTO EXCLUSIVO PARA DEBIAN${finColor}"
+	echo -e "${colorVerde}ESTE ES UN ENTORNO DE ESCRITORIO Y COMPLEMENTAMENTE EXCLUSIVO PARA DEBIAN${finColor}"
 	echo -e "\nSi Te equivocaste reinicia el programa\n"
-	cafe;
+	cafe;read
 	sudo apt install git inxi -y && cd /tmp && git clone https://github.com/thespation/dpux_bspwm && chmod 755 dpux_bspwm/* -R && cd dpux_bspwm/ && ./instalar.sh
 	}

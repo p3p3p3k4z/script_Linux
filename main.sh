@@ -13,7 +13,7 @@ source pack/gestor_pack.sh
 source pack/menu_pack.sh
 
 function version(){
-	echo -e "\t\t\tVersion 2.0"
+	echo -e "\t\t\tVersion 2.5"
 	echo -e "\t\t\tRealizado por p3p3p4k4z ^^\n"
 	gatito2
 	}
@@ -58,7 +58,8 @@ clear
 
 nombre=$(whoami)
 echo -e "\t\t\tBienvenido accediste como:${colorRojo} $nombre ${finColor}"
-echo -e "\t\t\tEste es un pequeño asistente para el sistema Debian / Ubuntu"
+echo -e "\t\t\tEste es un script para gestionar paquetes"
+echo -e "\t\t\tcompatible en los sistemas Debian/Ubuntu"
 version
 echo -e "${colorAmarillo}Presiona cualquier tecla para continuar...${finColor}"
 read
@@ -78,7 +79,8 @@ if [ "$(id -u)" == "0" ];then
 	echo -e "\t\t\t7- Comandos para GIT"
 	echo -e "\t\t\t8- Paquetes flatpack"
 	echo -e "\t\t\t9- Escritorio bspwm (SOLO PARA DEBIAN)"
-	echo -e "\t\t\t10- Salir"
+	echo -e "\t\t\t10- Impresora HP"
+	echo -e "\t\t\t0- Salir"
 	divisor
 	echo -e "${colorGris}Teclea una opcion${finColor}";read op
 	
@@ -104,7 +106,8 @@ if [ "$(id -u)" == "0" ];then
 			;;
 		8) f_flatpak;;
 		9) bspwm;;
-		10) exit 0;;
+		10)f_impresora_hp;;
+		0) exit 0;;
 		*)
 			echo -e "No seleccionaste nada...\n\n";;
 	esac

@@ -1,6 +1,10 @@
 #! /bin/bash
 
-paquete_inicial=("curl" "git" "neofetch" "htop" "gufw" "xinput" "tree" "nala" "aptitude")
+paquete_inicial=("curl" "git" "neofetch" "htop" "gufw" "xinput" "tree" "nala" "aptitude" "btop" "mocp")
+
+function inicio_debian(){
+	sudo apt update -y && sudo apt install open-vm-tools-desktop -y && sudo apt update -y && sudo apt dist-upgrade -y && sudo autoremove -y
+}
 
 function instalar_basico() {
     for pack in "${paquete_inicial[@]}"
@@ -16,18 +20,18 @@ function instalar_basico() {
 
 #Lenguajes
 function f_c(){
-	sudo nala install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config --assume-yes
+	sudo nala install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config --assume-yes --install-recommends --install-suggests
 	}
 function f_java(){
-	sudo nala install openjdk-17-jdk default-jdk --assume-yes
+	sudo nala install openjdk-17-jdk default-jdk --assume-yes --install-recommends 
 	}
 function f_python(){
-	sudo nala install python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip python3-tk python3-pygame python3-wxgtk4.0 --assume-yes
+	sudo nala install python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip python3-tk python3-pygame python3-wxgtk4.0 --assume-yes --install-recommends
 	}
 	
 #media
 function f_media(){
-	sudo aptitude install vlc mpv -y
+	sudo aptitude install vlc mpv audacious -y
 	}	
 	
 #Decoradores para pc	
@@ -121,5 +125,13 @@ function f_flatpak() {
 	echo "Para instalar aplicaciones, visita https://flathub.org"
 	sleep 3
 }
+
+function f_impresora_hp(){
+	sudo apt update
+	sudo apt install hplip hplip-gui;
+	lpstat -p;
+	sudo apt install printer-driver-hpcups printer-driver-postscript-hp
+	sudo apt install simple-scan
+	}
 
 export paquete_inicial
