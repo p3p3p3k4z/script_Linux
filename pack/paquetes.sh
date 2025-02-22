@@ -128,11 +128,11 @@ function f_flatpak() {
 }
 
 function f_impresora_hp(){
-	sudo apt update
-	sudo apt install hplip hplip-gui;
+	sudo apt update -y
+	sudo apt install hplip hplip-gui -y;
 	lpstat -p;
-	sudo apt install printer-driver-hpcups printer-driver-postscript-hp
-	sudo apt install simple-scan
+	sudo apt install printer-driver-hpcups printer-driver-postscript-hp -y
+	sudo apt install simple-scan -y
 	}
 
 export paquete_inicial
