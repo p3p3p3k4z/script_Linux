@@ -73,13 +73,9 @@ if [ "$(id -u)" == "0" ];then
 	echo -e "\t\t\t1- Inicio basico para nueva pc"
 	echo -e "\t\t\t2- Gestor de paquetes"
 	echo -e "\t\t\t3- Instalar paquetes"
-	echo -e "\t\t\t4- Instalar Wine"
-	echo -e "\t\t\t5- Instalar Docker"
-	echo -e "\t\t\t6- Comandos para LINUX"
-	echo -e "\t\t\t7- Comandos para GIT"
-	echo -e "\t\t\t8- Paquetes flatpack"
-	echo -e "\t\t\t9- Escritorio bspwm (SOLO PARA DEBIAN)"
-	echo -e "\t\t\t10- Impresora HP"
+	echo -e "\t\t\t4- Escritorio bspwm (SOLO PARA DEBIAN)"
+	echo -e "\t\t\t5- Comandos para LINUX"
+	echo -e "\t\t\t6- Comandos para GIT"
 	echo -e "\t\t\t0- Salir"
 	divisor
 	echo -e "${colorGris}Teclea una opcion${finColor}";read op
@@ -88,25 +84,21 @@ if [ "$(id -u)" == "0" ];then
 		1) nueva_pc;;
 		2) menu_pack;;
 		3) menu_instalar;;
-		4) f_wine;;
-		5) f_docker;;
-		6)	divisor
+		4) bspwm;;
+		5)	divisor
 			echo -e "\tRECUERDA CUANDO TERMINES DE LEER PRESIONA Q PARA SALIR"
 			divisor
 			gatitoFin2
 			sleep 3
 			leer_comandos;
 			;;
-		7)	divisor
+		6)	divisor
 			echo -e "\tRECUERDA CUANDO TERMINES DE LEER PRESIONA Q PARA SALIR"
 			divisor
 			gatitoFin2
 			sleep 3
 			leer_git;
 			;;
-		8) f_flatpak;;
-		9) bspwm;;
-		10)f_impresora_hp;;
 		0) exit 0;;
 		*)
 			echo -e "No seleccionaste nada...\n\n";;

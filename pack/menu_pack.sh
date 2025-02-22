@@ -122,7 +122,13 @@ function menu_instalar() {
         echo "2- Paquetes de Programacion"
         echo "3- Paquetes de IDE"
         echo "4- Paquetes Curiosos"
-        echo "5- Regresar al menu principal"
+        echo "5- Paquete para impresora HP"
+        echo "- - - - - DEBIAN - - - - -"
+        echo "a- Instalar Wine"
+	    echo "b- Instalar Docker"
+        echo "c- Paquetes flatpack"
+        echo "- - - - - - - - - - - - - -"
+        echo "0- Regresar al menu principal"
         echo "Teclea una opción"
         read opp
 
@@ -131,7 +137,11 @@ function menu_instalar() {
             2) instalar_programacion;;
             3) instalar_IDE;;
             4) instalar_chacharas;;
-            5) echo "Saliendo del menu"; break ;;
+            5)f_impresora_hp;;
+            a) f_wine;;
+		    b) f_docker;;
+            c) f_flatpak;;
+            0) echo "Saliendo del menu"; break ;;
             *) echo "Opción inválida. Por favor, selecciona una opción válida." ;;
         esac
 

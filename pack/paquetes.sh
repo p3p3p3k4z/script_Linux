@@ -99,7 +99,8 @@ function f_docker() {
 	# Actualizar paquetes e instalar Docker
 	echo "Actualizando repositorios e instalando Docker..."
 	sudo apt update
-	sudo aptitude install -y docker-ce docker-ce-cli containerd.io
+	sudo aptitude install -y docker-ce docker-ce-cli containerd.io 
+	sudo aptitude install -y docker-compose
 
 	# Agregar usuario al grupo docker para evitar usar sudo en cada comando
 	echo "Añadiendo el usuario actual al grupo docker..."
