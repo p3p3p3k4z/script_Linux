@@ -28,6 +28,9 @@ sudo make run
 ```
 
 ---
+
+![preview](inicio.png)
+
 Por el momento no planeo agregar mas funcionalidades a este programa. Ya que solo me sirvio como practica para
 los conocimientos que adquiri de bash.
 
