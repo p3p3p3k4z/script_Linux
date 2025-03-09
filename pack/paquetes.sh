@@ -1,6 +1,6 @@
 #! /bin/bash
 
-paquete_inicial=("curl" "git" "neofetch" "htop" "gufw" "xinput" "tree" "nala" "aptitude" "btop" "mocp")
+paquete_inicial=("curl" "git" "neofetch" "htop" "gufw" "xinput" "tree" "nala" "aptitude" "btop" "net-tools")
 
 function inicio_debian(){
 	sudo apt update -y && sudo apt install open-vm-tools-desktop -y && sudo apt update -y && sudo apt dist-upgrade -y && sudo autoremove -y
