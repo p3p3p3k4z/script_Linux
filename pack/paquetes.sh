@@ -36,7 +36,7 @@ function f_media(){
 	
 #Decoradores para pc	
 function f_chacharas(){
-	sudo nala install cbonsai lolcat toilet cowsay fortunes-es cmatrix oneko hollywood --assume-yes
+	sudo nala install cbonsai lolcat toilet cowsay fortunes-es cmatrix oneko hollywood cmus moc --assume-yes
 	}
 
 function aptitude_test(){
