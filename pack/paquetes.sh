@@ -1,8 +1,8 @@
 #! /bin/bash
 
 export paquete_inicial_debian=("curl" "git" "neofetch" "htop" "gufw" "xinput" "tree" "nala" "aptitude" "btop" "net-tools")
-export paquete_inicial_fedora=("curl" "git" "neofetch" "htop" "firewalld" "xorg-x11-server-utils" "tree" "dnf-plugins-core" "btop" "net-tools") # firewalld es la alternativa a gufw, xinput está en xorg-x11-server-utils
-export paquete_inicial_opensuse=("curl" "git" "neofetch" "htop" "firewalld" "xorg-x11-server-extra" "tree" "btop" "net-tools" "patterns-games-x_base") # xorg-x11-server-extra para xinput
+export paquete_inicial_fedora=("curl" "git" "fastfetch" "htop" "firewalld" "tree" "dnf-plugins-core" "btop" "net-tools") # firewalld es la alternativa a gufw, xinput está en xorg-x11-server-utils
+export paquete_inicial_opensuse=("curl" "git" "fastfetch" "htop" "firewalld" "tree" "btop" "net-tools" "patterns-games-x_base") # xorg-x11-server-extra para xinput
 
 # --- Funciones de Instalación Base por Distro ---
 
@@ -81,16 +81,16 @@ function f_c_debian() {
 }
 function f_c_fedora() {
     echo "Instalando herramientas C/C++ para Fedora/Derivadas..."
-    sudo dnf install -y @development-tools zlib-devel ncurses-devel gdbm-devel nss-devel openssl-devel readline-devel libffi-devel sqlite-devel wget bzip2-devel pkgconf-pkg-tools
+    sudo dnf install -y @development-tools zlib-devel ncurses-devel gdbm-devel nss-devel openssl-devel readline-devel libffi-devel sqlite-devel wget bzip2-devel 
 }
 function f_c_opensuse() {
     echo "Instalando herramientas C/C++ para OpenSUSE/Derivadas..."
-    sudo zypper install -y patterns-devel_basis zlib-devel ncurses-devel gdbm-devel libopenssl-devel readline-devel libffi-devel sqlite3-devel wget libbz2-devel pkg-config
+    sudo zypper install -y patterns-devel_basis zlib-devel ncurses-devel gdbm-devel libopenssl-devel readline-devel libffi-devel sqlite3-devel wget libbz2-devel 
 }
 
 function f_java_debian() {
     echo "Instalando Java para Debian/Derivadas..."
-    sudo apt install -y openjdk-21-jdk default-jdk
+    sudo apt install -y openjdk-17-jdk default-jdk
 }
 function f_java_fedora() {
     echo "Instalando Java para Fedora/Derivadas..."
@@ -108,12 +108,12 @@ function f_python_debian() {
 function f_python_fedora() {
     echo "Instalando Python y módulos para Fedora/Derivadas..."
     # Algunos paquetes pueden tener nombres diferentes en Fedora
-    sudo dnf install -y python3-devel python3-pip python3-psutil python3-twisted stress python3-setuptools python3-PyQt5 python3-tkinter python3-pygame python3-wxpython
+    sudo dnf install -y python3-devel python3-pip python3-psutil python3-twisted stress python3-setuptools python3-PyQt5 python3-tkinter python3-pygame 
 }
 function f_python_opensuse() {
     echo "Instalando Python y módulos para OpenSUSE/Derivadas..."
     # Nombres de paquetes en OpenSUSE también pueden variar
-    sudo zypper install -y python3-devel python3-pip python3-psutil python3-twisted stress python3-setuptools python3-PyQt5 python3-tk python3-pygame python3-wxPython
+    sudo zypper install -y python3-devel python3-pip python3-psutil python3-twisted stress python3-setuptools python3-PyQt5 python3-tk python3-pygame 
 }
 
 # --- Multimedia ---
