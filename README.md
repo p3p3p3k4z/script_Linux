@@ -1,34 +1,41 @@
 # script_linux
 
-Este script es creado con la finalidad de ahorrar tiempos a la hora de estar instalando paquetes que uso habitualmente.
-Constantemente necesito instalar los mismos paquetes para nuevas pc o cada que rompo mi sistema linux. 
-Inicialmente lo hice para Debian y distros derivadas (Ubuntu, Linux Mint, Zorin os, Pop OS, ect). Por lo que es donde mejor se desempeña el script.
-A lo largo de mi aprendizaje con linux he probado mas distros y por ende ha cambiado la forma de instalación, pero no la necesidad de instalar mis paquetes favoritos.
-Actualmente he añadido las distros que usado en este tiempo: Debian, Opensuse y Fedora.
-Espero y sea de utilidad para alguien mas, asi como me ha ayudado a mi :3
+### ¿Qué es `script_linux`?
+Este proyecto es un script de Bash diseñado para simplificar la instalación de paquetes en diversas distribuciones de Linux. Nació de la necesidad de automatizar la configuración de mis sistemas, especialmente después de reinstalar mi sistema operativo o en nuevas máquinas.
 
-El proyecto consiste en un asistente de gestion e instalaccion de paquetes. Es decir tiene las funciones de:
-- Actualizar
-- Eliminar
-- Buscar
-- Instalar
+El script se ha probado y funciona mejor en:
+* **Debian y distros derivadas:** Ubuntu, Linux Mint, Zorin OS, Pop!_OS.
+* **Otras distros:** OpenSUSE y Fedora.
 
-Para la instalacion de paquetes. Agrege algunos como:
-- C/C++
-- Java 17
-- Python
-- Docker
-- Flatpak
-- Wine
-- IDES
-- Extras ;)
+Espero que esta herramienta te sea tan útil como lo ha sido para mí, ahorrándote tiempo y esfuerzo en la configuración inicial de tu entorno de desarrollo.
+
+### Funcionalidades principales
+`script_linux` es un asistente de gestión e instalación de paquetes con las siguientes funciones:
+
+* **Actualización** de paquetes del sistema.
+* **Instalación** de paquetes específicos.
+* **Eliminación** de paquetes.
+* **Búsqueda** de paquetes en los repositorios.
 
 ---
-Para comenzar a usarlo basta con clonar el repositorio.
-Abrir la terminal y ejecutar:
+
+### Paquetes pre-configurados
+El script incluye opciones para instalar rápidamente tus herramientas de desarrollo favoritas:
+
+* **Lenguajes de programación:** C/C++, Java 17, Python.
+* **Herramientas de contenedores:** Docker.
+* **Sistemas de paquetes alternativos:** Flatpak.
+* **Compatibilidad:** Wine.
+* **Entornos de desarrollo:** Varios IDEs populares.
+* **Otros extras:** Herramientas y utilidades adicionales.
+
+---
+
+### ¿Cómo usarlo?
+Para empezar a usar el script, simplemente clona este repositorio, abre tu terminal y ejecuta el comando `make run`.
 
 ```bash
-sudo make run
+make run
 ```
 
 ---
