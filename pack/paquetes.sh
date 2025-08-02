@@ -77,7 +77,7 @@ function instalar_basico_opensuse() {
 
 function f_c_debian() {
     echo "Instalando herramientas C/C++ para Debian/Derivadas..."
-    sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config
+    sudo nala install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config --assume-yes --install-recommends --install-suggests
 }
 function f_c_fedora() {
     echo "Instalando herramientas C/C++ para Fedora/Derivadas..."
@@ -90,7 +90,7 @@ function f_c_opensuse() {
 
 function f_java_debian() {
     echo "Instalando Java para Debian/Derivadas..."
-    sudo apt install -y openjdk-17-jdk default-jdk
+    sudo nala install openjdk-17-jdk default-jdk --assume-yes --install-recommends 
 }
 function f_java_fedora() {
     echo "Instalando Java para Fedora/Derivadas..."
@@ -103,7 +103,7 @@ function f_java_opensuse() {
 
 function f_python_debian() {
     echo "Instalando Python y módulos para Debian/Derivadas..."
-    sudo apt install -y python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip python3-tk python3-pygame python3-wxgtk4.0
+    sudo nala install python3-all-dev python3-pip python3-psutil python3-twisted stress python3-setuptools python3-pyqt5 python3-pip python3-tk python3-pygame python3-wxgtk4.0 --assume-yes --install-recommends
 }
 function f_python_fedora() {
     echo "Instalando Python y módulos para Fedora/Derivadas..."
@@ -120,24 +120,24 @@ function f_python_opensuse() {
 
 function f_media_debian() {
     echo "Instalando reproductores multimedia para Debian/Derivadas..."
-    sudo apt install -y vlc mpv audacious
+    sudo aptitude install vlc mpv -y
 }
 function f_media_fedora() {
     echo "Instalando reproductores multimedia para Fedora/Derivadas..."
     # Se recomienda instalar RPM Fusion antes para estos paquetes
-    sudo dnf install -y vlc mpv audacious
+    sudo dnf install -y vlc mpv
 }
 function f_media_opensuse() {
     echo "Instalando reproductores multimedia para OpenSUSE/Derivadas..."
     # Se recomienda instalar Packman antes para estos paquetes
-    sudo zypper install -y vlc mpv audacious
+    sudo zypper install -y vlc mpv
 }
 
 # --- Decoradores para PC ---
 
 function f_chacharas_debian() {
     echo "Instalando 'chacharas' para Debian/Derivadas..."
-    sudo apt install -y cbonsai lolcat toilet cowsay fortunes-es cmatrix oneko hollywood cmus moc
+    sudo nala install -y cbonsai lolcat toilet cowsay fortunes cmatrix oneko hollywood cmus moc
 }
 function f_chacharas_fedora() {
     echo "Instalando 'chacharas' para Fedora/Derivadas..."
@@ -160,11 +160,7 @@ function f_wine_debian() {
     sudo apt update
     wget -nc https://dl.winehq.org/wine-builds/winehq.key
     sudo apt-key add winehq.key
-    sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/debian/ bullseye main' # Ajusta 'bullseye' a la versión de Debian
-    # O para Ubuntu:
-    # sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' # Ajusta 'focal' a la versión de Ubuntu
-    sudo apt update
-    sudo apt install -y --install-recommends winehq-stable
+    sudo aptitude install wine -y
     echo "Ya puedes usar wine. Solo ejecutalo en tu consola: wine app.exe"
 }
 
@@ -189,12 +185,13 @@ function f_wine_opensuse() {
 
 function f_docker_debian() {
     echo "Instalando Docker para Debian/Derivadas..."
-    sudo apt install -y ca-certificates curl gnupg lsb-release
+    sudo aptitude install -y apt-transport-https ca-certificates curl software-properties-common
     sudo mkdir -m 0755 -p /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt update
-    sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo aptitude install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo aptitude install -y docker-compose
     sudo usermod -aG docker "$USER"
     echo "Instalación completada. Cierra sesión/reinicia para aplicar cambios de grupo."
 }

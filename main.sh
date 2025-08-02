@@ -15,6 +15,9 @@ source pack/install_pack.sh
 source pack/gestor_pack.sh
 source pack/menu_pack.sh 
 
+# --- Tools ---
+source tools/toggle_kvm.sh
+
 # --- Funciones Generales ---
 function version(){
     echo -e "\t\tVersion 3.0"
@@ -70,7 +73,7 @@ detect_distro() {
     elif type lsb_release >/dev/null 2>&1; then
         local lsb_id=$(lsb_release -si | tr '[:upper:]' '[:lower:]')
         case "$lsb_id" in
-            ubuntu|debian|linuxmint|pop|raspbian) DISTRO_FAMILY="debian_based" ;;
+            ubuntu|debian|linuxmint|pop|sparky|raspbian) DISTRO_FAMILY="debian_based" ;;
             fedora|redhat|centos) DISTRO_FAMILY="fedora_based" ;;
             opensuse|suse) DISTRO_FAMILY="opensuse_based" ;;
             *) DISTRO_FAMILY="unknown" ;;
@@ -134,6 +137,7 @@ mostrar_menu_fedora() {
         echo -e "\t\t5- Comandos generales de LINUX"
         echo -e "\t\t6- Comandos para GIT"
 		echo -e "\t\t7- ESCRITORIO HYPERLAND"
+        echo -e "\t\t8- Activar o Desactivar KVM"
         echo -e "\t\t0- Volver al menú principal / Salir"
         divisor
         echo -e "${colorGris}Teclea una opción${finColor}";read op_fedora
@@ -157,6 +161,7 @@ mostrar_menu_fedora() {
                 gatitoFin2; sleep 3; leer_git;
                 ;;
 			7) hyperland;;
+            8) function_kvm;;
             0) break;;
             *) echo -e "${colorRojo}Opción no válida para Fedora/Derivadas.${finColor}\n\n";;
         esac
@@ -229,7 +234,6 @@ fi
 
 trap ctrl_c SIGINT
 
-permisos 
 clear
 
 nombre=$(whoami)
@@ -241,7 +245,7 @@ echo -e "${colorAmarillo}Presiona cualquier tecla para continuar...${finColor}"
 read
 
 # --- Verificación de Permisos de Superusuario ---
-if [ "$(id -u)" == "0" ];then
+#if [ "$(id -u)" == "0" ];then
     # Llamar a la función de detección al inicio del main
     detect_distro # Esto establecerá las variables $DISTRO_FAMILY y $OS_ID
 
@@ -264,12 +268,12 @@ if [ "$(id -u)" == "0" ];then
             exit 1
             ;;
     esac
-else
-    echo -e "${colorAmarillo}\n\nPor favor, reinicia el programa e inicia como superusuario (usando 'sudo ./tu_script.sh')...${finColor}"
-    gatitoFin2
-    sleep 5
-    exit 0
-fi
+#else
+#    echo -e "${colorAmarillo}\n\nPor favor, reinicia el programa e inicia como superusuario (usando 'sudo ./tu_script.sh')...${finColor}"
+#    gatitoFin2
+#    sleep 5
+#    exit 0
+#fi
 
 echo -e "\n${colorVerde}¡Gracias por usar el script!${finColor}"
 gatitoFin2
