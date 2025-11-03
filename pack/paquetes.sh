@@ -2,7 +2,7 @@
 
 export paquete_inicial_debian=("curl" "git" "neofetch" "htop" "gufw" "xinput" "tree" "nala" "aptitude" "btop" "net-tools")
 export paquete_inicial_fedora=("curl" "git" "fastfetch" "htop" "firewalld" "tree" "dnf-plugins-core" "btop" "net-tools") # firewalld es la alternativa a gufw, xinput está en xorg-x11-server-utils
-export paquete_inicial_opensuse=("curl" "git" "fastfetch" "htop" "firewalld" "tree" "btop" "net-tools" "patterns-games-x_base") # xorg-x11-server-extra para xinput
+export paquete_inicial_opensuse=("curl" "git" "fastfetch" "htop" "firewalld" "tree" "btop" "net-tools" "xinput" ) 
 
 # --- Funciones de Instalación Base por Distro ---
 
@@ -85,7 +85,8 @@ function f_c_fedora() {
 }
 function f_c_opensuse() {
     echo "Instalando herramientas C/C++ para OpenSUSE/Derivadas..."
-    sudo zypper install -y patterns-devel_basis zlib-devel ncurses-devel gdbm-devel libopenssl-devel readline-devel libffi-devel sqlite3-devel wget libbz2-devel 
+    sudo zypper -n install -t pattern devel_basis
+    sudo zypper install -y zlib-devel ncurses-devel gdbm-devel libopenssl-devel readline-devel libffi-devel sqlite3-devel wget libbz2-devel 
 }
 
 function f_java_debian() {
@@ -98,7 +99,7 @@ function f_java_fedora() {
 }
 function f_java_opensuse() {
     echo "Instalando Java para OpenSUSE/Derivadas..."
-    sudo zypper install -y java-21-openjdk java-latest-openjdk
+    sudo zypper install -y java-21-openjdk-devel 
 }
 
 function f_python_debian() {
@@ -113,7 +114,7 @@ function f_python_fedora() {
 function f_python_opensuse() {
     echo "Instalando Python y módulos para OpenSUSE/Derivadas..."
     # Nombres de paquetes en OpenSUSE también pueden variar
-    sudo zypper install -y python3-devel python3-pip python3-psutil python3-twisted stress python3-setuptools python3-PyQt5 python3-tk python3-pygame 
+    sudo zypper install -y python3-devel python3-pip python3-psutil python3-setuptools python3-PyQt5 python3-tk python3-pygame 
 }
 
 # --- Multimedia ---
@@ -133,6 +134,29 @@ function f_media_opensuse() {
     sudo zypper install -y vlc mpv
 }
 
+# --- Diseño ---
+
+function f_diseno_debian(){
+	sudo apt install -y krita blender gimp
+	}	
+function f_diseno_opensuse(){
+	sudo zypper install -y krita blender libresprite gimp
+	}
+	
+# --- temas ---
+function f_tema_opensuse(){
+	sudo zypper in xfwm4-theme*
+	sudo zypper in papirus*
+	}
+
+# --- codium ---
+function f_codium_opensuse(){
+	sudo rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
+	echo -e "[codium]\nname=Codium Repository\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1" | sudo tee /etc/zypp/repos.d/codium.repo
+	sudo zypper refresh
+	sudo zypper install codium
+	}
+
 # --- Decoradores para PC ---
 
 function f_chacharas_debian() {
@@ -145,8 +169,13 @@ function f_chacharas_fedora() {
 }
 function f_chacharas_opensuse() {
     echo "Instalando 'chacharas' para OpenSUSE/Derivadas..."
-    sudo zypper install -y lolcat toilet cowsay cmatrix oneko cmus moc # cbonsai, hollywood y fortunes-es podrían no estar directamente en los repos oficiales
+    sudo zypper install -y toilet cowsay cmatrix oneko cmus moc hollywood cbonsai  #lolcat y fortunes-es podrían no estar directamente en los repos oficiales
 }
+
+function f_pfetch(){
+	git clone https://github.com/dylanaraps/pfetch.git;
+	sudo make install
+	}
 
 # --- Wine ---
 

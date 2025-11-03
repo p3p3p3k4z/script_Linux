@@ -217,7 +217,6 @@ function eliminar_pack_opensuse() {
 function limpiar_pack_opensuse() {
     echo "Limpiando paquetes innecesarios para OpenSUSE/Derivadas..."
     sudo zypper clean --all
-    sudo zypper packages --orphan
     echo "Sistema limpio."
 }
 

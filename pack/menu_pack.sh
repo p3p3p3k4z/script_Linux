@@ -233,6 +233,7 @@ function menu_instalar() {
         echo "6- Instalar Wine"
         echo "7- Instalar Docker"
         echo "8- Paquetes Flatpak"
+        echo "9- Paquetes de diseño"
         echo "0- Regresar al menú principal"
         divisor
         echo -e "${colorGris}Teclea una opción${finColor}"
@@ -282,8 +283,17 @@ function menu_instalar() {
                     *) echo -e "${colorRojo}ERROR: Instalación de Flatpak no soportada para esta distribución.${finColor}" ;;
                 esac
                 ;;
+            9) 
+				case "$DISTRO_FAMILY" in
+                    debian_based) f_diseno_debian ;;
+                    fedora_based) echo "Aun no disponible" ;;
+                    opensuse_based) f_diseno_opensuse ;;
+                    *) echo -e "${colorRojo}ERROR: Paquetes de diseño no soportada para esta distribución.${finColor}" ;;
+                esac
+                ;;
+                
             0) echo "Saliendo del menú de instalación."; break ;;
-            *) echo "${colorRojo}Opción inválida. Por favor, selecciona una opción válida.${finColor}" ;;
+            *) echo -e "${colorRojo}Opción inválida. Por favor, selecciona una opción válida.${finColor}" ;;
         esac
 
         echo -e "\n${colorAmarillo}Presiona cualquier tecla para continuar...${finColor}"

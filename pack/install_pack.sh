@@ -66,13 +66,14 @@ function nueva_pc(){
             f_c_fedora
             f_java_fedora
             f_python_fedora
-            sudo dnf install -y geany thonny neovim # Check package names for Fedora
+            sudo dnf install -y geany thonny neovim tilix
             ;;
         opensuse_based) 
             f_c_opensuse
             f_java_opensuse
             f_python_opensuse
-            sudo zypper install -y geany thonny neovim # Check package names for OpenSUSE
+            sudo zypper install -y geany thonny neovim tilix 
+            sudo zypper ref
             ;;
         *) echo "${colorRojo}ERROR: La instalación de herramientas de programación no está soportada para esta distribución.${finColor}" ;;
     esac
@@ -94,9 +95,9 @@ function nueva_pc(){
     esac
 
     divisor
-    neofetch
+	pfetch
     sleep 5
-    echo -e "${colorVerde}TU NUEVA PC YA ESTÁ LISTA PARA USAR :^)${finColor}"
+    echo -e "\n\n${colorVerde}TU NUEVA PC YA ESTÁ LISTA PARA USAR :^)${finColor}"
     echo -e "${colorAmarillo}Presiona cualquier tecla para continuar...${finColor}"
     gatitoFin2
 }
