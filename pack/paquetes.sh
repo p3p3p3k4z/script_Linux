@@ -172,10 +172,59 @@ function f_chacharas_opensuse() {
     sudo zypper install -y toilet cowsay cmatrix oneko cmus moc hollywood cbonsai  #lolcat y fortunes-es podrían no estar directamente en los repos oficiales
 }
 
-function f_pfetch(){
-	git clone https://github.com/dylanaraps/pfetch.git;
-	sudo make install
-	}
+function f_pfetch() {
+    #echo "Intentando instalar pfetch..."
+    
+    if command -v pfetch > /dev/null; then
+       # echo "pfetch ya está instalado en el sistema. Ejecutando..."
+        pfetch
+       # echo "Fin de la función f_pfetch."
+        return 0 # Indica éxito y termina la función
+    fi
+
+    if [ -d "pfetch" ]; then
+        echo "Limpiando carpeta 'pfetch' anterior..."
+        rm -rf pfetch
+    fi
+
+    # Esta variable nos ayudará a saber si la instalación fue exitosa
+    local INSTALL_SUCCESS=0
+    
+    git clone https://github.com/dylanaraps/pfetch.git && \
+    (
+        cd pfetch && \
+        sudo make install && \
+	hash -r 2>/dev/null && \  # <--- FUERZA LA RECARGA DE COMANDOS
+        INSTALL_SUCCESS=1  # Marca el éxito dentro de la subshell
+    )
+    
+    # -------------------------------------------------------------
+    # Ejecución o Manejo de error
+    # -------------------------------------------------------------
+    
+    if [ "$INSTALL_SUCCESS" -eq 1 ]; then
+        #echo "pfetch instalado. Ejecutando pfetch..."
+        pfetch 
+        
+    elif command -v neofetch > /dev/null; then
+        #echo "Fallo la instalacion de pfetch. Ejecutando neofetch..."
+        neofetch
+        
+    elif command -v fastfetch > /dev/null; then
+        #echo "Fallo la instalacion de pfetch. Ejecutando fastfetch..."
+        fastfetch
+        
+    else
+        echo "Ni pfetch se pudo instalar, ni neofetch o fastfetch fueron encontrados."
+        echo "Por favor, instala un paquete fetch o revisa los permisos de instalacion."
+    fi
+
+    if [ -d "pfetch" ]; then
+        echo "Limpiando archivos temporales restantes..."
+        rm -rf pfetch
+    fi
+
+}
 
 # --- Wine ---
 

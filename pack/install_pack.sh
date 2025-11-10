@@ -95,8 +95,9 @@ function nueva_pc(){
     esac
 
     divisor
-	pfetch
+	f_pfetch
     sleep 5
+
     echo -e "\n\n${colorVerde}TU NUEVA PC YA ESTÁ LISTA PARA USAR :^)${finColor}"
     echo -e "${colorAmarillo}Presiona cualquier tecla para continuar...${finColor}"
     gatitoFin2
